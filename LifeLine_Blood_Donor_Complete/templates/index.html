@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}LifeLine Blood Donor{% endblock %}
+{% block content %}
+<section class="hero">
+ <div class="container py-5">
+  <div class="row align-items-center min-vh-50">
+   <div class="col-lg-7">
+    <span class="badge bg-light text-danger mb-3">EVERY DROP COUNTS</span>
+    <h1 class="display-4 fw-bold">Give Blood.<br>Give Life.</h1>
+    <p class="lead">Connect blood donors with people who need them. Register as a donor or find a donor near you.</p>
+    <a class="btn btn-light btn-lg me-2" href="{{ url_for('donors') }}">Find a Donor</a>
+    <a class="btn btn-outline-light btn-lg" href="{{ url_for('request_blood') }}">Need Blood?</a>
+   </div>
+  </div>
+ </div>
+</section>
+<div class="container py-5">
+ <div class="row g-4 text-center">
+  <div class="col-md-6"><div class="stat"><h2>{{ donors }}</h2><p>Available Donors</p></div></div>
+  <div class="col-md-6"><div class="stat"><h2>{{ requests }}</h2><p>Active Blood Requests</p></div></div>
+ </div>
+ <div class="row g-4 mt-4">
+  <div class="col-md-4"><div class="card h-100 p-4"><h3>🩸 Become a Donor</h3><p>Register your blood group and location so people can contact you when help is needed.</p><a href="{{ url_for('register') }}" class="btn btn-danger">Register</a></div></div>
+  <div class="col-md-4"><div class="card h-100 p-4"><h3>🔎 Find Donors</h3><p>Search available donors by blood group and city.</p><a href="{{ url_for('donors') }}" class="btn btn-danger">Search</a></div></div>
+  <div class="col-md-4"><div class="card h-100 p-4"><h3>🏥 Request Blood</h3><p>Submit an emergency or planned blood requirement.</p><a href="{{ url_for('request_blood') }}" class="btn btn-danger">Request</a></div></div>
+ </div>
+</div>
+{% endblock %}

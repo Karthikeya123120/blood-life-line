@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Find Donors{% endblock %}
+{% block content %}
+<div class="container py-5">
+<h2 class="fw-bold">Find Blood Donors</h2>
+<form class="row g-2 my-4">
+<div class="col-md-4"><select class="form-select" name="blood_group"><option value="">All Blood Groups</option>{% for b in ['A+','A-','B+','B-','AB+','AB-','O+','O-'] %}<option {% if blood==b %}selected{% endif %}>{{b}}</option>{% endfor %}</select></div>
+<div class="col-md-5"><input class="form-control" name="city" placeholder="Enter city" value="{{ city }}"></div>
+<div class="col-md-3"><button class="btn btn-danger w-100">Search</button></div>
+</form>
+<div class="row g-3">
+{% for d in donors %}
+<div class="col-md-6 col-lg-4"><div class="card donor-card h-100 p-4">
+<div class="d-flex justify-content-between"><h4>{{ d.name }}</h4><span class="blood">{{ d.blood_group }}</span></div>
+<p class="mb-1">📍 {{ d.city }}{% if d.state %}, {{ d.state }}{% endif %}</p>
+<p class="mb-1">👤 {{ d.age }} years · {{ d.gender or 'Not specified' }}</p>
+<p class="mb-0">📞 {{ d.phone }}</p>
+</div></div>
+{% else %}<div class="alert alert-warning">No available donors found.</div>{% endfor %}
+</div>
+</div>
+{% endblock %}

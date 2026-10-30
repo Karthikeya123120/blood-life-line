@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container py-5">
+<h2>Welcome, {{ session.user_name }} 👋</h2>
+{% if donor %}
+<div class="card mt-4 p-4">
+<h4>Donor Profile</h4>
+<div class="row">
+<div class="col-md-4"><b>Name:</b> {{ donor.name }}</div>
+<div class="col-md-4"><b>Blood Group:</b> <span class="badge bg-danger">{{ donor.blood_group }}</span></div>
+<div class="col-md-4"><b>City:</b> {{ donor.city }}</div>
+</div>
+<div class="mt-3"><b>Phone:</b> {{ donor.phone }} &nbsp; | &nbsp; <b>Available:</b> {{ "Yes" if donor.available else "No" }}</div>
+</div>
+{% else %}
+<div class="alert alert-info mt-4">You have not registered as a donor yet.</div>
+<a class="btn btn-danger" href="{{ url_for('become_donor') }}">Become a Donor</a>
+{% endif %}
+</div>
+{% endblock %}

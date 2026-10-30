@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Request Blood{% endblock %}
+{% block content %}
+<div class="container py-5"><div class="form-card wide">
+<h2 class="fw-bold mb-4">Request Blood</h2>
+<form method="post" class="row g-3">
+<div class="col-md-6"><label>Your Name</label><input class="form-control" name="requester_name" required></div>
+<div class="col-md-6"><label>Phone</label><input class="form-control" name="phone" required></div>
+<div class="col-md-4"><label>Blood Group</label><select class="form-select" name="blood_group" required>{% for b in ['A+','A-','B+','B-','AB+','AB-','O+','O-'] %}<option>{{b}}</option>{% endfor %}</select></div>
+<div class="col-md-2"><label>Units</label><input class="form-control" type="number" name="units" min="1" max="10" value="1" required></div>
+<div class="col-md-6"><label>Hospital</label><input class="form-control" name="hospital" required></div>
+<div class="col-md-6"><label>City</label><input class="form-control" name="city" required></div>
+<div class="col-md-6"><label>Required Date</label><input class="form-control" type="date" name="required_date"></div>
+<div class="col-12"><label>Message</label><textarea class="form-control" name="message" rows="4"></textarea></div>
+<div class="col-12"><button class="btn btn-danger">Submit Request</button></div>
+</form>
+</div></div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="container py-5">
+<h2 class="fw-bold">Admin Dashboard</h2>
+<p>Total registered users: <b>{{ user_count }}</b></p>
+<h4 class="mt-4">Blood Requests</h4>
+<div class="table-responsive"><table class="table table-bordered align-middle">
+<thead><tr><th>Name</th><th>Blood</th><th>Units</th><th>Hospital</th><th>City</th><th>Status</th><th>Action</th></tr></thead>
+<tbody>
+{% for r in requests %}
+<tr><td>{{r.requester_name}}</td><td><span class="blood">{{r.blood_group}}</span></td><td>{{r.units}}</td><td>{{r.hospital}}</td><td>{{r.city}}</td><td>{{r.status}}</td>
+<td>
+<form method="post" action="{{ url_for('update_request', req_id=r.id, status='Fulfilled') }}" class="d-inline"><button class="btn btn-sm btn-success">Fulfill</button></form>
+<form method="post" action="{{ url_for('update_request', req_id=r.id, status='Cancelled') }}" class="d-inline"><button class="btn btn-sm btn-secondary">Cancel</button></form>
+</td></tr>
+{% else %}<tr><td colspan="7">No requests.</td></tr>{% endfor %}
+</tbody></table></div>
+
+<h4 class="mt-5">Registered Donors</h4>
+<div class="table-responsive"><table class="table table-striped">
+<thead><tr><th>Name</th><th>Blood</th><th>Age</th><th>Phone</th><th>City</th></tr></thead>
+<tbody>{% for d in donors %}<tr><td>{{d.name}}</td><td>{{d.blood_group}}</td><td>{{d.age}}</td><td>{{d.phone}}</td><td>{{d.city}}</td></tr>{% endfor %}</tbody>
+</table></div>
+</div>
+{% endblock %}

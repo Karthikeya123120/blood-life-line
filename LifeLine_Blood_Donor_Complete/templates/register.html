@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="container py-5"><div class="form-card">
+<h2 class="fw-bold mb-4">Create Account</h2>
+<form method="post">
+<label>Name</label><input class="form-control mb-3" name="name" required>
+<label>Email</label><input class="form-control mb-3" type="email" name="email" required>
+<label>Phone</label><input class="form-control mb-3" name="phone" required>
+<label>Password</label><input class="form-control mb-4" type="password" name="password" minlength="6" required>
+<button class="btn btn-danger w-100">Register</button>
+</form>
+</div></div>
+{% endblock %}

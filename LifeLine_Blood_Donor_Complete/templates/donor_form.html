@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Become a Donor{% endblock %}
+{% block content %}
+<div class="container py-5"><div class="form-card wide">
+<h2 class="fw-bold mb-4">Donor Registration</h2>
+<form method="post" class="row g-3">
+<div class="col-md-6"><label>Name</label><input class="form-control" name="name" required></div>
+<div class="col-md-3"><label>Age</label><input class="form-control" type="number" name="age" min="18" max="65" required></div>
+<div class="col-md-3"><label>Gender</label><select class="form-select" name="gender"><option>Male</option><option>Female</option><option>Other</option></select></div>
+<div class="col-md-6"><label>Blood Group</label><select class="form-select" name="blood_group" required>{% for b in ['A+','A-','B+','B-','AB+','AB-','O+','O-'] %}<option>{{b}}</option>{% endfor %}</select></div>
+<div class="col-md-6"><label>Phone</label><input class="form-control" name="phone" required></div>
+<div class="col-md-6"><label>Email</label><input class="form-control" type="email" name="email"></div>
+<div class="col-md-6"><label>City</label><input class="form-control" name="city" required></div>
+<div class="col-md-6"><label>State</label><input class="form-control" name="state"></div>
+<div class="col-md-6"><label>Last Donation Date</label><input class="form-control" type="date" name="last_donation"></div>
+<div class="col-12"><button class="btn btn-danger">Register as Donor</button></div>
+</form>
+</div></div>
+{% endblock %}
